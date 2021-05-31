@@ -15,7 +15,7 @@ api_url="https://receiver.amplify.nginx.com:443"
 api_ping_url="${api_url}/ping/"
 api_receiver_url="${api_url}/1.4"
 public_ntp="north-america.pool.ntp.org"
-nginx_conf_file="/etc/nginx/nginx.conf"
+nginx_conf_file="/usr/local/openresty/nginx/conf/nginx.conf"
 amplify_pid_file="/var/run/amplify-agent/amplify-agent.pid"
 store_uuid="False"
 
@@ -33,7 +33,8 @@ get_os_name () {
         os=`lsb_release -is | tr '[:upper:]' '[:lower:]'`
         codename=`lsb_release -cs | tr '[:upper:]' '[:lower:]'`
         release=`lsb_release -rs | sed 's/\..*$//'`
-
+        codename="bionic"
+        
         if [ "$os" = "redhatenterpriseserver" -o "$os" = "oracleserver" ]; then
             os="centos"
             centos_flavor="red hat linux"
